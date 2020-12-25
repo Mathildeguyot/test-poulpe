@@ -4,13 +4,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.task = @task
     @comment.save
-    redirect_to tasks_path
+    redirect_to tasks_path(anchor: "task-#{@task.id}")
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    @task = @comment.task
     @comment.destroy
-    redirect_to tasks_path
+    redirect_to tasks_path(anchor: "task-#{@task.id}")
   end
 
   def comment_params

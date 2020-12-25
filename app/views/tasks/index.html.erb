@@ -3,24 +3,24 @@
     <h1>Bienvenue sur ta to do !</h1>
     <%= link_to "", destroy_user_session_path, :class => "fas fa-sign-out-alt", method: :delete %>
   </div>
-  <%= simple_form_for @task do |f| %>
+  <%= simple_form_for @task, remote: true do |f| %>
     <%= f.input :title, as: :string %>
     <%= f.input :deadline, as: :date, html5: true %>
     <%= f.button :submit %>
   <% end %>
   <% @tasks.each do |task| %>
     <div class="d-flex">
-      <h2><%= task.title %></h2>
-      <%= link_to "", task_path(task), :class => "far fa-trash-alt", method: :delete, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
+      <h2 id="task-<%= task.id %>"><%= task.title %></h2>
+      <%= link_to "", task_path(task), :class => "far fa-trash-alt", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
     </div>
     <p><%= task.deadline %></p>
     <% task.comments.each do |comment| %>
       <div class="d-flex">
-        <p><%= comment.content %></p>
-        <%= link_to "", comment_path(comment), :class => "far fa-trash-alt", method: :delete, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+        <p id="comment-<%= comment.id %>"><%= comment.content %></p>
+        <%= link_to "", comment_path(comment), :class => "far fa-trash-alt", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
       </div>
     <% end %>
-    <%= simple_form_for ([task, @comment]) do |f| %>
+    <%= simple_form_for ([task, @comment]), remote: true do |f| %>
       <%= f.input :content, as: :string %>
       <%= f.button :submit %>
     <% end %>
