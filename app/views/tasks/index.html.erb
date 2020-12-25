@@ -8,6 +8,7 @@
   <% end %>
   <% @tasks.each do |task| %>
     <h2><%= task.title %></h2>
+    <%= link_to "", task_path(task), :class => "far fa-trash-alt", method: :delete, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
     <p><%= task.deadline %></p>
     <% task.comments.each do |comment| %>
       <p><%= comment.content %></p>
