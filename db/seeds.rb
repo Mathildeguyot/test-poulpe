@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.new(email: "bernard@gmail.com", password: "mercibeaucoup")
+user1.save
+
+puts "User saved !"
+
+task1 = Task.new(title: "Décorer le sapin", deadline: Date.new(2020, 12, 23), done: true)
+task1.user = user1
+task1.save
+
+puts "Task saved !"
+
+comment1 = Comment.new(content: "Mettre les guirlandes avant les boules !")
+comment1.task = task1
+comment1.save
+
+puts "Comment saved !"

@@ -1,5 +1,15 @@
 <% if user_signed_in? %>
   <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <h1>Bienvenue sur ta to do !</h1>
+  <%= simple_form_for @task do |f| %>
+    <%= f.input :title, as: :text %>
+    <%= f.input :deadline, as: :date, html5: true %>
+    <%= f.button :submit %>
+  <% end %>
+  <% @tasks.each do |task| %>
+    <h2><%= task.title %></h2>
+    <p><%= task.deadline %></p>
+  <% end %>
 <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
