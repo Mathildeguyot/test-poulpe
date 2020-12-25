@@ -12,6 +12,7 @@
     <p><%= task.deadline %></p>
     <% task.comments.each do |comment| %>
       <p><%= comment.content %></p>
+      <%= link_to "", comment_path(comment), :class => "far fa-trash-alt", method: :delete, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
     <% end %>
     <%= simple_form_for ([task, @comment]) do |f| %>
       <%= f.input :content, as: :text %>
