@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
+
   def index
     @tasks = Task.all
+    @done = Task.where("done = true")
+    @todo = Task.where("done = false")
     @task = Task.new
     @comment = Comment.new
   end
@@ -15,6 +18,12 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    redirect_to tasks_path
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
     redirect_to tasks_path
   end
 
