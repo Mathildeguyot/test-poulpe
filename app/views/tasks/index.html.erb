@@ -9,6 +9,13 @@
   <% @tasks.each do |task| %>
     <h2><%= task.title %></h2>
     <p><%= task.deadline %></p>
+    <% task.comments.each do |comment| %>
+      <p><%= comment.content %></p>
+    <% end %>
+    <%= simple_form_for ([task, @comment]) do |f| %>
+      <%= f.input :content, as: :text %>
+      <%= f.button :submit %>
+    <% end %>
   <% end %>
 <% else %>
   <%= link_to "Login", new_user_session_path %>
