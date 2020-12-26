@@ -1,11 +1,10 @@
 class TasksController < ApplicationController
 
   def index
-    @user = current_user
-    @tasks = @user.tasks
-    @done = @tasks.where("done = true")
-    @todo = @tasks.where(done: false, urgent: false)
-    @urgent = @tasks.where(done: false, urgent: true)
+    @tasks = Task.all
+    @done = Task.where("done = true")
+    @todo = Task.where(done: false, urgent: false)
+    @urgent = Task.where(done: false, urgent: true)
 
     @task = Task.new
     @comment = Comment.new
