@@ -30,32 +30,69 @@
             </div>
           <% end %>
           <%= simple_form_for ([task, @comment]), remote: true do |f| %>
-            <%= f.input :content, as: :string, placeholder: "Ajouter un commentaire", label: false, input_html: { id: 'new_comment'}, wrapper_html: { class: 'new_comment'} %>
+            <%= f.input :content, as: :string, placeholder: "Écris un commentaire...", label: false, input_html: { id: 'new_comment'}, wrapper_html: { class: 'new_comment'} %>
           <% end %>
         </div>
       <% end %>
     </div>
+
+
     <div class="undone-tasks">
       <h2>À faire</h2>
       <% @todo.each do |task| %>
-        <div class="d-flex align-items-center">
-          <i class="far fa-circle"></i>
-          <p id="task-<%= task.id %>" class="task-title"><%= task.title %></p>
-          <%= link_to "", task_path(task), :class => "far fa-trash-alt", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
-        </div>
-        <p><%= task.deadline %></p>
-        <% task.comments.each do |comment| %>
-          <div class="d-flex">
-            <p id="comment-<%= comment.id %>"><%= comment.content %></p>
-            <%= link_to "", comment_path(comment), :class => "far fa-trash-alt", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+        <div class="todo-card task-card">
+          <div class="top-card">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex">
+                <i class="fas far fa-circle todo"></i>
+                <p id="task-<%= task.id %>" class="task-title"><%= task.title %></p>
+              </div>
+              <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
+            </div>
+            <p class="deadline"><%= task.deadline %></p>
           </div>
-        <% end %>
-        <%= simple_form_for ([task, @comment]), remote: true do |f| %>
-          <%= f.input :content, as: :string %>
-          <%= f.button :submit %>
-        <% end %>
+          <% task.comments.each do |comment| %>
+            <div class="d-flex comment">
+              <p id="comment-<%= comment.id %>"><%= comment.content %></p>
+              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+            </div>
+          <% end %>
+          <%= simple_form_for ([task, @comment]), remote: true do |f| %>
+            <%= f.input :content, as: :string, placeholder: "Écris un commentaire...", label: false, input_html: { id: 'new_comment'}, wrapper_html: { class: 'new_comment'} %>
+          <% end %>
+        </div>
       <% end %>
     </div>
+
+
+    <div class="urgent-tasks">
+      <h2>Urgent</h2>
+      <% @todo.each do |task| %>
+        <div class="urgent-card task-card">
+          <div class="top-card">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex">
+                <i class="fas far fa-circle todo"></i>
+                <p id="task-<%= task.id %>" class="task-title"><%= task.title %></p>
+              </div>
+              <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
+            </div>
+            <p class="deadline"><%= task.deadline %></p>
+          </div>
+          <% task.comments.each do |comment| %>
+            <div class="d-flex comment">
+              <p id="comment-<%= comment.id %>"><%= comment.content %></p>
+              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+            </div>
+          <% end %>
+          <%= simple_form_for ([task, @comment]), remote: true do |f| %>
+            <%= f.input :content, as: :string, placeholder: "Écris un commentaire...", label: false, input_html: { id: 'new_comment'}, wrapper_html: { class: 'new_comment'} %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
   </div>
 
 <% else %>

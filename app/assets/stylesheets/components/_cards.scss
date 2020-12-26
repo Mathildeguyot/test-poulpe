@@ -3,6 +3,7 @@
   padding: 15px;
   border-radius: 6px;
   border: 1px solid #D4D4ED;
+  width: 350px;
   .top-card {
     .task-title {
       margin-top: 0;
@@ -61,19 +62,89 @@
   #new_comment {
     border-radius: 20px;
     border: none;
-   // height: 40px;
     color: #D4D4ED;
     outline: none !important;
-    p {
+    input[type="text"] {
       font-size: 14px;
-    }
-  }
-  .new_comment {
-    border-radius: 20px;
-    border: 1px solid #D4D4ED;
-    color: #D4D4ED
-    p {
-      font-size: 14px;
+      color: #D4D4ED;
     }
   }
 }
+
+
+.todo-card {
+    background-color: #99B8FF;
+    border: 1px solid #5C8DFF;
+    .top-card {
+      .task-title {
+        color: #3370FF;
+      }
+      .todo {
+        font-size: 24px;
+        color: #FBBBB1;
+      }
+      .deadline {
+        color: #5C8DFF;
+      }
+      .trash {
+        background-color: #99B8FF;
+        box-shadow: 0px 0px 16px #5C8DFF;
+        border: 1px solid #5C8DFF;
+        color: #3370FF;
+        &:hover {
+          box-shadow: 0px 0px 0px #5C8DFF;
+        }
+      }
+    }
+    .comment {
+      .delete {
+        color: #3370FF;
+      }
+    }
+    #new_comment {
+      color: #5C8DFF;
+      input[type="text"] {
+        color: #5C8DFF;
+      }
+    }
+
+  }
+
+
+  .urgent-card {
+    background-color: #FEF9D7;
+    border: 1px solid #FBEB74;
+    .top-card {
+      .task-title {
+        color: #DAC107;
+      }
+      .todo {
+        font-size: 24px;
+        color: #FBBBB1;
+      }
+      .deadline {
+        color: #FBEB74;
+      }
+      .trash {
+        background-color: #FEF9D7;
+        box-shadow: 0px 0px 16px #FBEB74;
+        border: 1px solid #FBEB74;
+        color: #DAC107;
+        &:hover {
+          box-shadow: 0px 0px 0px #FBEB74;
+        }
+      }
+    }
+    .comment {
+      .delete {
+        color: #DAC107;
+      }
+    }
+    #new_comment {
+      color: #FBEB74;
+      input[type="text"] {
+        color: #FBEB74;
+      }
+    }
+
+  }
