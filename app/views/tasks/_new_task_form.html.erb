@@ -1,5 +1,0 @@
-<%= simple_form_for @task, remote: true do |f| %>
-  <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false %>
-  <%= f.input :deadline, as: :date, html5: true, label: false %>
-  <%= f.button :submit, 'Ajouter une tâche' %>
-<% end %>

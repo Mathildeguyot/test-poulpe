@@ -3,10 +3,13 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @done = Task.where("done = true")
-    @todo = Task.where("done = false")
+    @todo = Task.where(done: false, urgent: false)
+    @urgent = Task.where(done: false, urgent: true)
+
     @task = Task.new
     @comment = Comment.new
   end
+
 
   def create
     @task = Task.new(task_params)
@@ -28,6 +31,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :done, :deadline)
+    params.require(:task).permit(:title, :done, :deadline, :urgent)
   end
 end

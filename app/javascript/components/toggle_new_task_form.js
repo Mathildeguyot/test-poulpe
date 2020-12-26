@@ -16,6 +16,13 @@ const toggleNewTaskForm = () => {
     myForm.classList.add("invisible");
     overlay.classList.add("invisible");
   });
+
+  const overlay = document.querySelector(".overlay");
+  overlay.addEventListener("click", (event) => {
+    const myForm = document.querySelector(".task-form");
+    myForm.classList.add("invisible");
+    overlay.classList.add("invisible");
+  })
 }
 
 
