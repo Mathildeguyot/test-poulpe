@@ -1,0 +1,79 @@
+.task-card {
+  background-color: #E2E2F3;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #D4D4ED;
+  .top-card {
+    .task-title {
+      margin-top: 0;
+      margin-bottom: 0;
+      color: #6262BC;
+      font-weight: 800;
+      font-size: 18px;
+      margin-left: 8px;
+    }
+    .done {
+      font-size: 24px;
+      color: #e3fdf0;
+    }
+    .deadline {
+      font-size: 14px;
+      color: #B8B8E0;
+    }
+    .trash {
+      background-color: #E3E3F3;
+      padding: 6px;
+      box-shadow: 0px 0px 16px #C5C5E7;
+      border-radius: 10px;
+      border: 1px solid #D4D4ED;
+      color: #7E7EC9;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        box-shadow: 0px 0px 0px #C5C5E7;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+  .comment {
+    background-color: white;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #F1F1F9;
+    margin-bottom: 3px;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    .delete {
+      color: #6262BC;
+      margin-left: 13px;
+      text-decoration: none;
+      opacity: 0.8;
+      &:hover {
+        transition: 0.2s ease-in-out;
+        opacity: 1;
+      }
+    }
+  }
+  #new_comment {
+    border-radius: 20px;
+    border: none;
+   // height: 40px;
+    color: #D4D4ED;
+    outline: none !important;
+    p {
+      font-size: 14px;
+    }
+  }
+  .new_comment {
+    border-radius: 20px;
+    border: 1px solid #D4D4ED;
+    color: #D4D4ED
+    p {
+      font-size: 14px;
+    }
+  }
+}
