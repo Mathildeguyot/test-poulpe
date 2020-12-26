@@ -14,10 +14,9 @@
     <h3>Ajoute une tâche</h3>
     <%= simple_form_for @task, remote: true do |f| %>
       <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false %>
-      <div class="d-flex">
-        <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
-        <%= f.button :submit, 'Go !', id: "new-task-button" %>
-      </div>
+      <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
+      <%= f.input :urgent, as: :radio_buttons %>
+      <%= f.button :submit, 'Go !', id: "new-task-button" %>
     <% end %>
   </div>
 
@@ -75,6 +74,9 @@
           <%= simple_form_for ([task, @comment]), remote: true do |f| %>
             <%= f.input :content, as: :string, placeholder: "Écris un commentaire...", label: false, input_html: { id: 'new_comment'}, wrapper_html: { class: 'new_comment'} %>
           <% end %>
+          <% if task.urgent == true %>
+            <h1>hey</h1>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -82,7 +84,7 @@
 
     <div class="urgent-tasks">
       <h2>URGENT</h2>
-      <% @todo.each do |task| %>
+      <% @urgent.each do |task| %>
         <div class="urgent-card task-card">
           <div class="top-card">
             <div class="d-flex align-items-center justify-content-between">
