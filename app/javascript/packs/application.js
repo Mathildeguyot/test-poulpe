@@ -29,10 +29,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { checkTask } from '../components/check_task';
 import { toggleNewTaskForm } from '../components/toggle_new_task_form';
+import { toggleEditTaskForm } from '../components/toggle_edit_task_form';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // checkTask();
   toggleNewTaskForm();
+  toggleEditTaskForm();
 });

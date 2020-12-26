@@ -4,11 +4,12 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @done = Task.where("done = true")
     @todo = Task.where(done: false, urgent: false)
-    @urgent = Task.where("urgent = true")
+    @urgent = Task.where(done: false, urgent: true)
 
     @task = Task.new
     @comment = Comment.new
   end
+
 
   def create
     @task = Task.new(task_params)

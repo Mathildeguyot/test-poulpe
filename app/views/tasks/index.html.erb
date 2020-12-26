@@ -26,7 +26,7 @@
     <div class="done-tasks">
       <h2>DÉJÀ FAIT !</h2>
       <% @done.each do |task| %>
-        <div class="task-card">
+        <div class="task-card" data-task-id="<%= task.id %>">
           <div class="top-card">
             <div class="d-flex align-items-center justify-content-between">
               <div class="d-flex">
@@ -35,7 +35,17 @@
               </div>
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
-            <p class="deadline"><%= task.deadline %></p>
+            <div class="d-flex justify-content-between">
+              <p class="deadline"><%= task.deadline %></p>
+              <i class="fas fa-pencil-alt" id="pencil"></i>
+            </div>
+            <div class="task-form invisible" id="edit-form">
+              <%= simple_form_for task, remote: true do |f| %>
+                <%= f.input :done %>
+                <%= f.input :urgent, as: :radio_buttons %>
+                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+              <% end %>
+            </div>
           </div>
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
@@ -54,7 +64,7 @@
     <div class="undone-tasks">
       <h2>À FAIRE</h2>
       <% @todo.each do |task| %>
-        <div class="todo-card task-card">
+        <div class="todo-card task-card" data-task-id="<%= task.id %>">
           <div class="top-card">
             <div class="d-flex align-items-center justify-content-between">
               <div class="d-flex">
@@ -63,7 +73,17 @@
               </div>
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
-            <p class="deadline"><%= task.deadline %></p>
+            <div class="d-flex justify-content-between">
+              <p class="deadline"><%= task.deadline %></p>
+              <i class="fas fa-pencil-alt" id="pencil"></i>
+            </div>
+            <div class="task-form invisible" id="edit-form">
+              <%= simple_form_for task, remote: true do |f| %>
+                <%= f.input :done %>
+                <%= f.input :urgent, as: :radio_buttons %>
+                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+              <% end %>
+            </div>
           </div>
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
@@ -85,7 +105,7 @@
     <div class="urgent-tasks">
       <h2>URGENT</h2>
       <% @urgent.each do |task| %>
-        <div class="urgent-card task-card">
+        <div class="urgent-card task-card" data-task-id="<%= task.id %>">
           <div class="top-card">
             <div class="d-flex align-items-center justify-content-between">
               <div class="d-flex">
@@ -94,7 +114,17 @@
               </div>
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
-            <p class="deadline"><%= task.deadline %></p>
+            <div class="d-flex justify-content-between">
+              <p class="deadline"><%= task.deadline %></p>
+              <i class="fas fa-pencil-alt" id="pencil"></i>
+            </div>
+            <div class="task-form invisible" id="edit-form">
+              <%= simple_form_for task, remote: true do |f| %>
+                <%= f.input :done %>
+                <%= f.input :urgent, as: :radio_buttons %>
+                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+              <% end %>
+            </div>
           </div>
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
@@ -108,7 +138,6 @@
         </div>
       <% end %>
     </div>
-
 
   </div>
 
