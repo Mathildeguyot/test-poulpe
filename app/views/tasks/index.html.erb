@@ -1,13 +1,20 @@
 <% if user_signed_in? %>
+  <div class="overlay invisible"></div>
   <div class="d-flex justify-content-between align-items-center">
     <h1>Bienvenue sur ta to do !</h1>
     <%= link_to "", destroy_user_session_path, :class => "fas fa-sign-out-alt", method: :delete %>
   </div>
-  <%= simple_form_for @task, remote: true do |f| %>
-    <%= f.input :title, as: :string %>
-    <%= f.input :deadline, as: :date, html5: true %>
-    <%= f.button :submit %>
-  <% end %>
+  <i class="fas fa-plus-circle" id="plus"></i>
+  <div class="task-form invisible">
+    <h3>Ajoute une tâche</h3>
+    <%= simple_form_for @task, remote: true do |f| %>
+      <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false %>
+      <div class="d-flex">
+        <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
+        <%= f.button :submit, 'Go !', input_html: { id: "new-task-button" }, class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </div>
   <div class="d-flex justify-content-between">
     <div class="done-tasks">
       <h2>Déjà fait !</h2>
