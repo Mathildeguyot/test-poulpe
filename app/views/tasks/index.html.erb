@@ -1,23 +1,31 @@
 <% if user_signed_in? %>
   <div class="overlay invisible"></div>
-  <div class="d-flex justify-content-between align-items-center">
-    <h1>Bienvenue sur ta to do !</h1>
-    <%= link_to "", destroy_user_session_path, :class => "fas fa-sign-out-alt", method: :delete %>
+
+  <div class="d-flex justify-content-between align-items-center top">
+    <div class="d-flex align-items-center">
+      <h1>Bienvenue sur ta to do !</h1>
+      <i class="fas fa-plus" id="plus"></i>
+    </div>
+    <%= link_to "", destroy_user_session_path, :class => "fas fa-sign-out-alt", method: :delete, id: "log-out" %>
   </div>
-  <i class="fas fa-plus-circle" id="plus"></i>
+
+
   <div class="task-form invisible">
     <h3>Ajoute une tâche</h3>
     <%= simple_form_for @task, remote: true do |f| %>
       <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false %>
       <div class="d-flex">
         <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
-        <%= f.button :submit, 'Go !', input_html: { id: "new-task-button" }, class: 'btn-primary' %>
+        <%= f.button :submit, 'Go !', id: "new-task-button" %>
       </div>
     <% end %>
   </div>
+
+
+
   <div class="d-flex justify-content-between">
     <div class="done-tasks">
-      <h2>Déjà fait !</h2>
+      <h2>DÉJÀ FAIT !</h2>
       <% @done.each do |task| %>
         <div class="task-card">
           <div class="top-card">
@@ -45,7 +53,7 @@
 
 
     <div class="undone-tasks">
-      <h2>À faire</h2>
+      <h2>À FAIRE</h2>
       <% @todo.each do |task| %>
         <div class="todo-card task-card">
           <div class="top-card">
@@ -73,7 +81,7 @@
 
 
     <div class="urgent-tasks">
-      <h2>Urgent</h2>
+      <h2>URGENT</h2>
       <% @todo.each do |task| %>
         <div class="urgent-card task-card">
           <div class="top-card">

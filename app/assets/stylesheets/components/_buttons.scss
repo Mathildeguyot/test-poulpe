@@ -1,5 +1,39 @@
 #new-task-button {
   color: #FFD6D8;
   border: 2px solid #FFD6D8;
-  margin-left: 5px;
+  margin-left: 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    color: #FF5A5F;
+    border: 2px solid #FF5A5F;
+    background-color: #FFD6D8;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+
+#plus {
+  color: #FF5A5F;
+  border: 2px solid #FF5A5F;
+  padding: 5px 14px;
+  margin-left: 20px;
+  border-radius: 6px;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+
+#log-out {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  &:hover {
+    color: rgba(0, 0, 0, 0.4);
+    transition: 0.2s ease-in-out;
+  }
 }

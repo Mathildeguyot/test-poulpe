@@ -3,6 +3,13 @@ h1 {
   font-weight: 800;
 }
 
+h2 {
+  margin-bottom: 12px;
+  font-size: 26px;
+  text-align: center;
+  font-weight: 200;
+}
+
 .content-wrapper {
   width: 1100px;
   margin: auto;
@@ -14,7 +21,7 @@ h1 {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0px 14px;
   margin: 0px 14px;
-  height: 100vh;
+  height: calc(100vh - 120px);
   width: 378px
 }
 
@@ -44,6 +51,7 @@ h1 {
   }
   h3 {
     color: #FFD6D8;
+    margin-bottom: 14px;
   }
 }
 
@@ -60,4 +68,8 @@ h1 {
 
 .invisible {
   visibility: hidden;
+}
+
+.top {
+  margin-bottom: 25px;
 }
