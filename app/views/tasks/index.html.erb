@@ -12,10 +12,14 @@
   <div class="task-form invisible">
     <h3>Ajoute une tâche</h3>
     <%= simple_form_for @task, remote: true do |f| %>
-      <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false %>
-      <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
-      <%= f.input :urgent, as: :radio_buttons %>
-      <%= f.button :submit, 'Go !', id: "new-task-button" %>
+      <%= f.input :title, as: :string, placeholder: "Ex : Décorer le sapin", label: false, input_html: { id: "title-input" } %>
+      <div class="d-flex align-items-center justify-content-between">
+        <%= f.input :deadline, as: :date, html5: true, label: false, input_html: { id: "deadline-input" } %>
+        <%= f.input :urgent, id: "urgent-input" %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= f.button :submit, 'Go !', id: "new-task-button" %>
+      </div>
     <% end %>
   </div>
 
@@ -36,13 +40,16 @@
             </div>
             <div class="d-flex justify-content-between">
               <p class="deadline"><%= task.deadline %></p>
-              <i class="fas fa-pencil-alt" id="pencil"></i>
+              <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
+              <h3>Des modifications ?</h3>
               <%= simple_form_for task, remote: true do |f| %>
-                <%= f.input :done %>
-                <%= f.input :urgent, as: :radio_buttons %>
-                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+                <%= f.input :done, label: 'Fait !', label_html: { class: 'done-label' } %>
+                <%= f.input :urgent, label_html: { class: 'urgent-label' } %>
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, 'OK !', id: "new-task-button" %>
+                </div>
               <% end %>
             </div>
           </div>
@@ -74,12 +81,12 @@
             </div>
             <div class="d-flex justify-content-between">
               <p class="deadline"><%= task.deadline %></p>
-              <i class="fas fa-pencil-alt" id="pencil"></i>
+              <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
               <%= simple_form_for task, remote: true do |f| %>
                 <%= f.input :done %>
-                <%= f.input :urgent, as: :radio_buttons %>
+                <%= f.input :urgent %>
                 <%= f.button :submit, 'Go !', id: "new-task-button" %>
               <% end %>
             </div>
@@ -115,12 +122,12 @@
             </div>
             <div class="d-flex justify-content-between">
               <p class="deadline"><%= task.deadline %></p>
-              <i class="fas fa-pencil-alt" id="pencil"></i>
+              <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
               <%= simple_form_for task, remote: true do |f| %>
                 <%= f.input :done %>
-                <%= f.input :urgent, as: :radio_buttons %>
+                <%= f.input :urgent %>
                 <%= f.button :submit, 'Go !', id: "new-task-button" %>
               <% end %>
             </div>

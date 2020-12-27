@@ -48,10 +48,31 @@ h2 {
   z-index: 10;
   #deadline-input {
     width: 170px;
+    border-radius: 20px;
+  }
+  #title-input {
+    border-radius: 20px;
+  }
+  .form-check-label {
+    color: #FFD6D8;
   }
   h3 {
     color: #FFD6D8;
     margin-bottom: 14px;
+    text-align: center;
+  }
+}
+
+#edit-form {
+  width: 330px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .done-label {
+    color: #FFD6D8
+  }
+  .urgent-label {
+    color: #FFD6D8
   }
 }
 

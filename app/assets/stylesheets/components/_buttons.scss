@@ -1,8 +1,9 @@
 #new-task-button {
   color: #FFD6D8;
   border: 2px solid #FFD6D8;
-  margin-left: 20px;
-  border-radius: 30px;
+  border-radius: 40px;
+  font-size: 20px;
+  padding: 12px 10px;
   font-weight: 700;
   transition: 0.2s ease-in-out;
   &:hover {
