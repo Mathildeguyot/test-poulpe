@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = policy_scope(Task).where(user: current_user)
+    @tasks = policy_scope(Task).where(user: current_user).order(:deadline)
     @done = @tasks.where("done = true")
     @todo = @tasks.where(done: false, urgent: false)
     @urgent = @tasks.where(done: false, urgent: true)
@@ -14,8 +14,9 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     authorize @task
-    @task.save
-    redirect_to tasks_path
+    if @task.save
+      redirect_to tasks_path
+    end
   end
 
   def destroy

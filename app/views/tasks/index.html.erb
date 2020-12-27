@@ -39,7 +39,7 @@
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
             <div class="d-flex justify-content-between">
-              <p class="deadline"><%= task.deadline %></p>
+              <p class="deadline"><%= task.deadline.strftime('%d/%m/%Y') %></p>
               <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
@@ -56,7 +56,7 @@
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
               <p id="comment-<%= comment.id %>"><%= comment.content %></p>
-              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true  %>
             </div>
           <% end %>
           <%= simple_form_for ([task, @comment]), remote: true do |f| %>
@@ -80,21 +80,24 @@
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
             <div class="d-flex justify-content-between">
-              <p class="deadline"><%= task.deadline %></p>
+              <p class="deadline"><%= task.deadline.strftime('%d/%m/%Y') %></p>
               <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
+              <h3>Des modifications ?</h3>
               <%= simple_form_for task, remote: true do |f| %>
-                <%= f.input :done %>
-                <%= f.input :urgent %>
-                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+                <%= f.input :done, label: 'Fait !', label_html: { class: 'done-label' } %>
+                <%= f.input :urgent, label_html: { class: 'urgent-label' } %>
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, 'OK !', id: "new-task-button" %>
+                </div>
               <% end %>
             </div>
           </div>
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
               <p id="comment-<%= comment.id %>"><%= comment.content %></p>
-              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true  %>
             </div>
           <% end %>
           <%= simple_form_for ([task, @comment]), remote: true do |f| %>
@@ -121,21 +124,24 @@
               <%= link_to "", task_path(task), :class => "far fa-trash-alt trash", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer cette tâche ?" }  %>
             </div>
             <div class="d-flex justify-content-between">
-              <p class="deadline"><%= task.deadline %></p>
+              <p class="deadline"><%= task.deadline.strftime('%d/%m/%Y') %></p>
               <i class="fas fa-pencil-alt trash" id="pencil"></i>
             </div>
             <div class="task-form invisible" id="edit-form">
+              <h3>Des modifications ?</h3>
               <%= simple_form_for task, remote: true do |f| %>
-                <%= f.input :done %>
-                <%= f.input :urgent %>
-                <%= f.button :submit, 'Go !', id: "new-task-button" %>
+                <%= f.input :done, label: 'Fait !', label_html: { class: 'done-label' } %>
+                <%= f.input :urgent, label_html: { class: 'urgent-label' } %>
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, 'OK !', id: "new-task-button" %>
+                </div>
               <% end %>
             </div>
           </div>
           <% task.comments.each do |comment| %>
             <div class="d-flex comment">
               <p id="comment-<%= comment.id %>"><%= comment.content %></p>
-              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true, data: { confirm: "Êtes-vous sûrs de vouloir supprimer ce commentaire ?" }  %>
+              <%= link_to "", comment_path(comment), :class => "fas fa-times delete", method: :delete, remote: true  %>
             </div>
           <% end %>
           <%= simple_form_for ([task, @comment]), remote: true do |f| %>
