@@ -38,3 +38,10 @@
     transition: 0.2s ease-in-out;
   }
 }
+
+#log-in-btn {
+  color: #FBBBB1;
+  &:hover {
+    color: #FF5A5F;
+  }
+}
