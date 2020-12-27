@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.all
-    @done = Task.where("done = true")
-    @todo = Task.where(done: false, urgent: false)
-    @urgent = Task.where(done: false, urgent: true)
+    @tasks = policy_scope(Task).where(user: current_user)
+    @done = @tasks.where("done = true")
+    @todo = @tasks.where(done: false, urgent: false)
+    @urgent = @tasks.where(done: false, urgent: true)
 
     @task = Task.new
     @comment = Comment.new
@@ -12,20 +12,22 @@ class TasksController < ApplicationController
 
 
   def create
-    @task = Task.new(task_params)
-    @task.user = current_user
+    @task = current_user.tasks.new(task_params)
+    authorize @task
     @task.save
     redirect_to tasks_path
   end
 
   def destroy
     @task = Task.find(params[:id])
+    authorize @task
     @task.destroy
     redirect_to tasks_path
   end
 
   def update
     @task = Task.find(params[:id])
+    authorize @task
     @task.update(task_params)
     redirect_to tasks_path
   end
