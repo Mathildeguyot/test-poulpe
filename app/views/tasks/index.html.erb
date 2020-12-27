@@ -9,7 +9,6 @@
     <%= link_to "", destroy_user_session_path, :class => "fas fa-sign-out-alt", method: :delete, id: "log-out" %>
   </div>
 
-
   <div class="task-form invisible">
     <h3>Ajoute une tâche</h3>
     <%= simple_form_for @task, remote: true do |f| %>
