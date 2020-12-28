@@ -110,3 +110,47 @@ svg {
   overflow: hidden;
   overflow-y: auto;
 }
+
+
+@media (max-width: 782px) {
+  .content-wrapper {
+    width: 480px;
+    justify-content: center;
+  }
+  .top {
+    flex-direction: column-reverse;
+    #title-plus {
+      flex-direction: column;
+    }
+  }
+  .all-tasks {
+    flex-direction: column;
+    width: 350px;
+    margin: auto;
+  }
+  .scroll-tasks {
+    height: fit-content;
+  }
+  .undone-tasks {
+    border: hidden;
+    margin: 0px;
+    padding: 0px;
+    height: min-content;
+  }
+  svg {
+    display: none;
+  }
+}
+
+@media (min-width: 782px) and (max-width: 1130px) {
+  .content-wrapper {
+    width: 750px;
+  }
+  .done-tasks {
+    display: none;
+  }
+  .undone-tasks {
+    border-left: hidden;
+    margin-left: 0px;
+  }
+}
