@@ -5,6 +5,12 @@
   border: 1px solid #D4D4ED;
   width: 350px;
   margin-bottom: 14px;
+  transition: 0.2s ease-in-out;
+  opacity: 0.9;
+  &:hover {
+    transition: 0.2s ease-in-out;
+    opacity: 1;
+  }
   .top-card {
     .task-title {
       margin-top: 0;
@@ -65,11 +71,11 @@
   #new_comment {
     border-radius: 20px;
     border: none;
-    color: #D4D4ED;
+    color: #6262BC;
     outline: none !important;
     input[type="text"] {
       font-size: 14px;
-      color: #D4D4ED;
+      color: #6262BC;
     }
   }
 }
@@ -144,9 +150,9 @@
       }
     }
     #new_comment {
-      color: #FBEB74;
+      color: #DAC107;
       input[type="text"] {
-        color: #FBEB74;
+        color: #DAC107;
       }
     }
 
