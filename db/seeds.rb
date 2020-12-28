@@ -11,7 +11,7 @@ User.destroy_all
 
 puts "destroyed"
 
-user1 = User.new(email: "bernard@gmail.com", password: "mercibeaucoup")
+user1 = User.new(email: "bernard@gmail.com", password: "mercibeaucoup", pseudo: "Nanard")
 user1.save
 
 puts "User saved !"
